@@ -75,7 +75,7 @@ case "$OS" in
              echo -en "$_info"
           elif [[ $1 = "-v" ]]
              then echo -en "$_msg_v"
-             fc -l 0 | awk '{CMD[$0]++;count++}END {for (a in CMD) print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20 && printf '\n'
+             fc -l 0 | awk '$1="";{CMD[$0]++;count++}END {for (a in CMD) print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20 && printf '\n'
           else
              echo -en "$_invalid"
           fi
